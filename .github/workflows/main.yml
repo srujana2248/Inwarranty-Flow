@@ -28,3 +28,12 @@ jobs:
       - name: Run the postman collection with newman
         run: |
           newman run 'Inwarrenty-flow collection.postman_collection.json' -e QA.postman_environment.json -r cli,htmlextra
+
+      - name: Upload build artifcat Newman Report
+        if: always()
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: Newman Report
+          path: newman/*.html
+        
+           
